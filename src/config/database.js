@@ -1,11 +1,7 @@
 const mongoose = require('mongoose');
 
-const dbUser = 'ExempleDbUser';
-const dbPass = 'ExempleDbPassword';
-const dbName = 'NappSolutions';
-
 mongoose.connect(
-  'mongodb+srv://'+dbUser+':'+dbPass+'@nappsolutionstest-ixu2m.gcp.mongodb.net/'+dbName+'?retryWrites=true&w=majority',
+  'mongodb+srv://'+process.env.DB_USER+':'+process.env.DB_PASS+'@nappsolutionstest-ixu2m.gcp.mongodb.net/'+process.env.DB_NAME+'?retryWrites=true&w=majority',
   { useUnifiedTopology: true, useNewUrlParser: true }
 )
 
