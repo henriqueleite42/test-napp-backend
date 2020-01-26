@@ -9,16 +9,16 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Controllers
-require('./controllers/saleController')(app);
-require('./controllers/productController')(app);
-require('./controllers/customerController')(app);
-
 // Set CORS headers
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', process.env.FRONT_URL);
   next();
 });
+
+// Controllers
+require('./controllers/saleController')(app);
+require('./controllers/productController')(app);
+require('./controllers/customerController')(app);
 
 // Home
 app.get('/api', async (req, res) => {
