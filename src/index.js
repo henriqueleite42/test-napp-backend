@@ -1,4 +1,5 @@
 const express = require('express');
+const dotenv = require('dotenv');
 
 const Customer = require('./models/Customer');
 const Product = require('./models/Product');
@@ -6,6 +7,7 @@ const Sale = require('./models/Sale');
 
 const app = express();
 
+dotenv.config();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

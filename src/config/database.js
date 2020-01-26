@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+dotenv.config();
 
 mongoose.connect(
   'mongodb+srv://'+process.env.DB_USER+':'+process.env.DB_PASS+'@nappsolutionstest-ixu2m.gcp.mongodb.net/'+process.env.DB_NAME+'?retryWrites=true&w=majority',
