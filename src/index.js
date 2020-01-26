@@ -1,5 +1,4 @@
 const express = require('express');
-const cors = require('cors');
 
 const Customer = require('./models/Customer');
 const Product = require('./models/Product');
@@ -7,7 +6,6 @@ const Sale = require('./models/Sale');
 
 const app = express();
 
-app.use(cors( { origin: process.env.FRONT_URL } ));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -15,6 +13,12 @@ app.use(express.urlencoded({ extended: true }));
 require('./controllers/saleController')(app);
 require('./controllers/productController')(app);
 require('./controllers/customerController')(app);
+
+// Set CORS headers
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', process.env.FRONT_URL);
+  next();
+});
 
 // Home
 app.get('/api', async (req, res) => {
