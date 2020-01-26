@@ -7,7 +7,7 @@ const Sale = require('./models/Sale');
 
 const app = express();
 
-app.use(cors());
+app.use(cors( { origin: process.env.FRONT_URL } ));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
